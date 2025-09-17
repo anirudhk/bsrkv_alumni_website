@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { GraduationCap, User, Mail, Phone, MapPin, Calendar, Briefcase, CheckCircle } from 'lucide-react'
+// import { saveAlumniRegistration } from '@/lib/supabase'
 
 const RegisterPage = () => {
   const [formData, setFormData] = useState({
@@ -23,6 +24,8 @@ const RegisterPage = () => {
 
   const [currentStep, setCurrentStep] = useState(1)
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState('')
 
   const departments = [
     'Science',
@@ -64,11 +67,42 @@ const RegisterPage = () => {
     }
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Registration submitted:', formData)
-    setIsSubmitted(true)
+    setIsLoading(true)
+    setError('')
+
+    try {
+      // Prepare data for Supabase
+      const alumniData = {
+        first_name: formData.firstName,
+        last_name: formData.lastName,
+        email: formData.email,
+        phone: formData.phone,
+        graduation_year: formData.graduationYear,
+        department: formData.department,
+        profession: formData.profession,
+        company: formData.company,
+        location: formData.location,
+        linkedin: formData.linkedin,
+        interests: formData.interests,
+        newsletter: formData.newsletter
+      }
+
+      // For now, just simulate success
+      // TODO: Integrate with database
+      console.log('Registration data:', alumniData)
+      
+      // Simulate API call delay
+      await new Promise(resolve => setTimeout(resolve, 1000))
+      
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Registration error:', error)
+      setError('An error occurred. Please try again.')
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   const nextStep = () => {
@@ -165,6 +199,11 @@ const RegisterPage = () => {
         </div>
 
         <form onSubmit={handleSubmit} className="card">
+          {error && (
+            <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-red-600 text-sm">{error}</p>
+            </div>
+          )}
           {/* Step 1: Personal Information */}
           {currentStep === 1 && (
             <motion.div
@@ -454,9 +493,10 @@ const RegisterPage = () => {
             ) : (
               <button
                 type="submit"
-                className="btn-primary"
+                disabled={isLoading}
+                className={`btn-primary ${isLoading ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
-                Complete Registration
+                {isLoading ? 'Registering...' : 'Complete Registration'}
               </button>
             )}
           </div>
