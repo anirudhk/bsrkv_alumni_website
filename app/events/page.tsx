@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { Calendar, MapPin, Clock, Users, Filter, ExternalLink } from 'lucide-react'
 import { format } from 'date-fns'
 
@@ -186,9 +187,11 @@ const EventsPage = () => {
               className="card hover:shadow-lg transition-shadow duration-300 group"
             >
               <div className="relative mb-4 overflow-hidden rounded-lg">
-                <img
+                <Image
                   src={event.image}
                   alt={event.title}
+                  width={400}
+                  height={250}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute top-4 left-4">
@@ -262,7 +265,7 @@ const EventsPage = () => {
           className="mt-12 text-center"
         >
           <div className="card bg-primary-50 border-primary-200">
-            <h3 className="text-xl font-semibold text-gray-900 mb-2">Don't see an event you're interested in?</h3>
+            <h3 className="text-xl font-semibold text-gray-900 mb-2">Don&apos;t see an event you&apos;re interested in?</h3>
             <p className="text-gray-600 mb-4">Suggest an event or get involved in planning our next gathering.</p>
             <button className="btn-secondary">
               Suggest an Event

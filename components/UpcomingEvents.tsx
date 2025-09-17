@@ -66,7 +66,7 @@ const UpcomingEvents = () => {
             Upcoming Events
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't miss out on these exciting events and opportunities to reconnect with your school community
+            Don&apos;t miss out on these exciting events and opportunities to reconnect with your school community
           </p>
         </motion.div>
 

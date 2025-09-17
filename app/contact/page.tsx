@@ -90,7 +90,7 @@ const ContactPage = () => {
               Contact Us
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We'd love to hear from you. Get in touch with us for any questions, suggestions, or support.
+              We&apos;d love to hear from you. Get in touch with us for any questions, suggestions, or support.
             </p>
           </motion.div>
         </div>
@@ -277,7 +277,7 @@ const ContactPage = () => {
 
             <div className="card">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">How do I register for events?</h3>
-              <p className="text-gray-600">Visit our events page, select the event you're interested in, and click the "Register Now" button to complete your registration.</p>
+              <p className="text-gray-600">Visit our events page, select the event you&apos;re interested in, and click the &quot;Register Now&quot; button to complete your registration.</p>
             </div>
 
             <div className="card">

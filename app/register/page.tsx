@@ -97,7 +97,7 @@ const RegisterPage = () => {
           </div>
           <h1 className="text-2xl font-bold text-gray-900 mb-4">Registration Successful!</h1>
           <p className="text-gray-600 mb-6">
-            Welcome to the BSRKV Alumni Association! We've sent a confirmation email to {formData.email}.
+            Welcome to the BSRKV Alumni Association! We&apos;ve sent a confirmation email to {formData.email}.
           </p>
           <div className="space-y-2">
             <a href="/" className="btn-primary w-full block text-center">
